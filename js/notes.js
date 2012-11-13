@@ -1,61 +1,68 @@
-// Functions to help move notes around
+// Functions to help store notes
+// http://en.wikipedia.org/wiki/Pitch_class#Integer_notation
 
-var letterToOrdinal = {
-  'a' : 1,
-  'a#': 2,
-  'bb': 2,
-  'b' : 3,
-  'b#': 4,
-  'cb': 3,
-  'c' : 4,
-  'c#': 5,
-  'db': 5,
-  'd' : 6,
-  'd#': 7,
-  'eb': 7,
-  'e' : 8,
-  'e#': 9,
-  'fb': 8,
-  'f' : 9,
-  'f#': 10,
-  'gb': 10,
-  'g' : 11,
-  'g#': 12,
-  'ab': 12
+var _letterToNumeral = {
+  'c' : 0,
+  'c#': 1,
+  'db': 1,
+  'd' : 2,
+  'd#': 3,
+  'eb': 3,
+  'e' : 4,
+  'e#': 5,
+  'fb': 4,
+  'f' : 5,
+  'f#': 6,
+  'gb': 6,
+  'g' : 7,
+  'g#': 8,
+  'ab': 8,
+  'a' : 9,
+  'a#': 10,
+  'bb': 10,
+  'b' : 11,
+  'b#': 0,
+  'cb': 11
 }
 
-var ordinalToLetter = {
-  1 : ['a'],
-  2 : ['a#', 'bb'],
-  3 : ['b', 'cb'],
-  4 : ['b#', 'c'],
-  5 : ['c#', 'db'],
-  6 : ['d'],
-  7 : ['d#', 'eb'],
-  8 : ['e', 'fb'],
-  9 : ['e#', 'f'],
-  10: ['f#', 'gb'],
-  11: ['g'],
-  12: ['g#', 'ab']
+var _numeralToLetter = {
+  0 : ['c', 'b#'],
+  1 : ['db', 'c#'],
+  2 : ['d'],
+  3 : ['eb', 'd#'],
+  4 : ['fb', 'e'],
+  5 : ['f', 'e'],
+  6 : ['gb', 'f#'],
+  7 : ['g'],
+  8 : ['ab', 'g#'],
+  9 : ['a'],
+  10: ['bb', 'a#'],
+  11: ['b', 'cb']
 }
 
-// Takes a key and a note (i.e., C, G) and returns a half step interval (7)
-function noteToInterval(key, note) {
+// Translates a pitch into its numeral
+function getPitchNumeral(pitch) {
+  return _letterToNumeral(pitch.toLowerCase());
+}
 
-  // Find out the difference between the note and the key (might be negative)
-  var diff = letterToOrdinal[note.toLowerCase()] - letterToOrdinal[key.toLowerCase()];
+// Takes a key and a pitch (e.g., C, G) and returns a semitone interval (7)
+function pitchToInterval(key, pitch) {
+
+  // Find out the difference between the pitch and the key (might be negative)
+  var diff = _letterToNumeral[pitch.toLowerCase()] - _letterToNumeral[key.toLowerCase()];
 
   // Correct for negative diffs and return
   return (diff < 0 ? diff + 12 : diff);
 }
 
-// Takes a key id and an interval id (i.e., 4, 4) and returns a note (E)
-function intervalToNote(keyId, intervalId) {
+// Takes a key numeral and a semitone interval (i.e., 4, 4) and returns a letter pitch (E)
+function intervalToPitch(key, interval) {
 
   // Add interval to key
-  var note = keyId + intervalId;
+  var note = key + interval;
 
-  // Look up the actual chord
-  return ordinalToLetter[note > 12 ? note - 12 : note][0];
+  // Look up the actual pitch
+  // TODO: intelligently figure out which version of the pitch to use
+  return _numeralToLetter[note > 12 ? note - 12 : note][0];
 }
 
