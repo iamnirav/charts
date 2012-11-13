@@ -1,5 +1,6 @@
 // Functions to help store notes
 // http://en.wikipedia.org/wiki/Pitch_class#Integer_notation
+// Flat sign: &#9837;
 
 var _letterToNumeral = {
   'c' : 0,
@@ -26,18 +27,18 @@ var _letterToNumeral = {
 }
 
 var _numeralToLetter = {
-  0 : ['c', 'b#'],
-  1 : ['db', 'c#'],
+  0 : ['c', 'b&#9839;'],
+  1 : ['d&#9837;', 'c&#9839;'],
   2 : ['d'],
-  3 : ['eb', 'd#'],
-  4 : ['fb', 'e'],
+  3 : ['e&#9837;', 'd&#9839;'],
+  4 : ['e', 'f&#9837;'],
   5 : ['f', 'e'],
-  6 : ['gb', 'f#'],
+  6 : ['g&#9837;', 'f&#9839;'],
   7 : ['g'],
-  8 : ['ab', 'g#'],
+  8 : ['a&#9837;', 'g&#9839;'],
   9 : ['a'],
-  10: ['bb', 'a#'],
-  11: ['b', 'cb']
+  10: ['b&#9837;', 'a&#9839;'],
+  11: ['b', 'c&#9837;']
 }
 
 // Translates a pitch into its numeral
@@ -63,6 +64,6 @@ function intervalToPitch(key, interval) {
 
   // Look up the actual pitch
   // TODO: intelligently figure out which version of the pitch to use
-  return _numeralToLetter[note > 12 ? note - 12 : note][0];
+  return _numeralToLetter[note > 11 ? note - 12 : note][0];
 }
 

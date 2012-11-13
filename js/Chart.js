@@ -23,9 +23,33 @@ Chart.prototype.addChord = function(row, col, interval, quality, add) {
   this._chart[row][col] = new Chord(this, interval, quality, add);
 };
 
+Chart.prototype.render = function() {
+  $table = $('<table>').addClass('table table-bordered chart');
+  $.each(this._chart, function(i, row) {
+    var $row = $('<tr>');
+    $.each(row, function(j, chord) {
+      $('<td>')
+        .html(chord.toString())
+        .appendTo($row);
+    });
+    $table.append($row);
+  });
+  return $table;
+};
+
+Chart.prototype.setKey = function(key) {
+  if (key < 0) {
+    key += 12;
+  } else if (key > 11) {
+    key -= 12;
+  }
+  this.key = key;
+};
+
+
 
 // interval:   -1|0|1|2|...
-// quality:    -2|-1|0|1 (maj|min|dim|aug)
+// quality:    -2|-1|0|1 (dim|min|maj|aug)
 // add:        0|2|6|7|9|...
 function Chord(chart, interval, quality, add) {
   this.chart      = chart;
@@ -40,7 +64,7 @@ Chord.prototype.toString = function() {
     return '%';
   } else {
     return intervalToPitch(this.chart.key, this.interval).toUpperCase() +
-           (this.quality    === -1 ? '&ndash' : '') +
+           (this.quality    === -1 ? '&ndash;' : '') +
            (this.quality    === -2 ? '&deg;'  : '') +
            (this.quality    ===  1 ? '+'      : '') +
            (this.add || '');

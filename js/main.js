@@ -2,12 +2,20 @@
 
 $(function() {
 
-  function render() {
-    $.each(song.chords, function(index ,chord) {
-      $('.container').append(
-        $('<p>').html(chordToString(chord))
-      );
-    });
-  }
+  fixtures();
+
+  $('.transpose-down').click(function(e) {
+    $chart.setKey($chart.key - 1);
+    $('.chart').replaceWith($chart.render());
+  });
+
+  $('.transpose-up').click(function(e) {
+    $chart.setKey($chart.key + 1);
+    $('.chart').replaceWith($chart.render());
+  });
+
+  $('.chart-menu').click(function(e) {
+    $('#chordEditor').modal();
+  });
 
 });

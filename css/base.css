@@ -11,3 +11,20 @@ body {
   background: #f5f5f5;
   border-radius: 5px;
 }
+
+.btn-toolbar {
+  margin: 24px;
+}
+
+.chart {
+  margin: 24px;
+  width: 720px;
+}
+
+.chart td {
+  text-align: center;
+  vertical-align: middle;
+  width: 90px;
+  height: 60px;
+  font-size: 24px;
+}
