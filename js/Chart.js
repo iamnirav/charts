@@ -23,7 +23,7 @@ Chart.prototype.addChord = function(row, col, interval, quality, add) {
   this._chart[row][col] = new Chord(this, interval, quality, add);
 };
 
-Chart.prototype.render = function() {
+Chart.prototype.renderInto = function(selector) {
   $table = $('<table>').addClass('table table-bordered chart');
   $.each(this._chart, function(i, row) {
     var $row = $('<tr>');
@@ -34,7 +34,7 @@ Chart.prototype.render = function() {
     });
     $table.append($row);
   });
-  return $table;
+  $(selector).html($table);
 };
 
 Chart.prototype.setKey = function(key) {
