@@ -36,7 +36,7 @@
   </div>
 
   <!-- Chart Library -->
-  <div id="chartLibrary" class="modal hide" tabindex="-1" role="dialog">
+  <div id="chart-library-modal" class="modal hide" tabindex="-1" role="dialog">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
       <h3>Chart Library</h3>
@@ -51,13 +51,47 @@
   </div>
 
   <!-- Chord Editor -->
-  <div id="chordEditor" class="modal hide" tabindex="-1" role="dialog">
+  <div id="chord-editor-modal" class="modal hide" tabindex="-1" role="dialog">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
       <h3>Edit Chord</h3>
     </div>
     <div class="modal-body">
-      <p>edit your chord here</p>
+
+      <div class="chord-section-header">Base</div>
+      <div class="chord-section">
+        <div class="chord-option selected" data-interval="0">C</div>
+        <div class="chord-option" data-interval="1">C&#9839;</div>
+        <div class="chord-option" data-interval="2">D</div>
+        <div class="chord-option" data-interval="3">D&#9839;</div>
+        <div class="chord-option" data-interval="4">E</div>
+        <div class="chord-option" data-interval="5">F</div>
+        <div class="chord-option" data-interval="6">F&#9839;</div>
+        <div class="chord-option" data-interval="7">G</div>
+        <div class="chord-option" data-interval="8">G&#9839;</div>
+        <div class="chord-option" data-interval="9">A</div>
+        <div class="chord-option" data-interval="10">A&#9839;</div>
+        <div class="chord-option" data-interval="11">B</div>
+      </div>
+
+      <div class="chord-section-header">Quality</div>
+      <div class="chord-section">
+        <div class="chord-option selected" data-quality="0">maj</div>
+        <div class="chord-option" data-quality="-1">min</div>
+        <div class="chord-option" data-quality="-2">dim</div>
+        <div class="chord-option" data-quality="1">aug</div>
+      </div>
+
+      <div class="chord-section-header">Add</div>
+      <div class="chord-section">
+        <div class="chord-option selected" data-add="0">&times;</div>
+        <div class="chord-option" data-add="2">2</div>
+        <div class="chord-option" data-add="4">4</div>
+        <div class="chord-option" data-add="6">6</div>
+        <div class="chord-option" data-add="7">7</div>
+        <div class="chord-option" data-add="9">9</div>
+      </div>
+
     </div>
     <div class="modal-footer">
       <button class="btn btn-large btn-danger" data-dismiss="modal">Cancel</button>

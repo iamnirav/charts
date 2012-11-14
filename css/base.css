@@ -37,3 +37,35 @@ body {
   background-color: #333;
   color: #fff;
 }
+
+/* Chord editor */
+
+#chord-editor-modal {
+  width: 740px;
+  margin-left: -370px;
+}
+
+#chord-editor-modal .chord-section-header {
+  clear: both;
+}
+
+#chord-editor-modal .chord-section {
+
+}
+
+#chord-editor-modal .chord-option {
+  float: left;
+  width: 52px;
+  height: 36px;
+  text-align: center;
+  border: 1px solid #333;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 50%;
+  padding-top: 16px;
+}
+
+#chord-editor-modal .chord-option.selected {
+  background: #333;
+  color: #fff;
+}

@@ -24,13 +24,13 @@ $(function() {
   });
 
   $('.chart-library').on('click touchend', function(e) {
-    $('#chartLibrary').modal();
+    $('#chart-library-modal').modal();
     return false;
   });
 
   $('.chart-wrapper').on('click touchend', function(e) {
     $(e.target).addClass('editing');
-    $('#chordEditor').modal();
+    $('#chord-editor-modal').modal();
     return false;
   });
 
