@@ -20,6 +20,10 @@ body {
   margin: 24px;
 }
 
+h4 {
+  display: inline-block;
+}
+
 .chart {
   margin: 24px;
   width: 720px;

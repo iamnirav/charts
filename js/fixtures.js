@@ -48,5 +48,6 @@ function fixtures() {
   $chart.addChord(4, 7, 7, 0, 7);
 
   $chart.renderInto('.chart-wrapper');
+  $chart.renderTitleInto('.chart-title')
 
 }

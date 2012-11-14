@@ -11,19 +11,19 @@ $(function() {
     return false;
   });
 
-  $('.transpose-down').on('click touchend', function(e) {
+  $('.transpose-down-btn').on('click touchend', function(e) {
     $chart.setKey($chart.key - 1);
     $chart.renderInto('.chart-wrapper');
     return false;
   });
 
-  $('.transpose-up').on('click touchend', function(e) {
+  $('.transpose-up-btn').on('click touchend', function(e) {
     $chart.setKey($chart.key + 1);
     $chart.renderInto('.chart-wrapper');
     return false;
   });
 
-  $('.chart-library').on('click touchend', function(e) {
+  $('.chart-library-btn').on('click touchend', function(e) {
     $('#chart-library-modal').modal();
     return false;
   });
