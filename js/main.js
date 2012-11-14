@@ -34,4 +34,11 @@ $(function() {
     return false;
   });
 
+  $('#chord-editor-modal .chord-option').on('click touchend', function(e) {
+    $(this)
+      .addClass('selected')
+      .siblings('.chord-option')
+      .removeClass('selected');
+  });
+
 });
