@@ -4,7 +4,28 @@
 
 $(function() {
 
-  fixtures();
+  if (localStorage.chart) {
+
+    // revive saved charts
+    var reviver = function(key, value) {
+      if (key === 'theChart') {
+        return new Chart(value);
+      } else {
+        return value;
+      }
+    };
+    $chart = JSON.parse(localStorage.chart, reviver).theChart;
+    $chart.renderInto('.chart-wrapper');
+    $chart.renderTitleInto('.chart-title');
+    console.log('Loaded chart from localStorage');
+
+  } else {
+
+    // Load fixture data and save to localStorage.chart
+    fixtures();
+    localStorage.chart = JSON.stringify({theChart: $chart});
+    console.log('Loaded chart from fixture data');
+  }
 
   // Prevent elastic scrolling
   $('body').on('touchmove', function(e) {

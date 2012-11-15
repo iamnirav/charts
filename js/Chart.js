@@ -3,13 +3,17 @@
 
 function Chart(options) {
   options = options || {};
-  this._chart = options.chart || [];
+  this._chart = [];
   this.key    = options.key   || 0; // C
   this.title  = options.title || "Enter a title...";
+
+  if (options.rawChart) {
+    this.reviveChart(options.rawChart);
+  }
 }
 
 // Rows and cols are 0-indexed
-Chart.prototype.addChord = function(row, col, interval, quality, add) {
+Chart.prototype.addChord = function(row, col, options) {
 
   // Add empty rows to accomodate the new chord if necessary
   while (row > this._chart.length - 1) {
@@ -22,7 +26,7 @@ Chart.prototype.addChord = function(row, col, interval, quality, add) {
   }
 
   // Create new Chord object and add to chart at the right place
-  this._chart[row][col] = new Chord(this, interval, quality, add);
+  this._chart[row][col] = new Chord(this, options);
 };
 
 Chart.prototype.getChord = function(row, col) {
@@ -68,21 +72,35 @@ Chart.prototype.setKey = function(key) {
 
 Chart.prototype.toJSON = function() {
   return {
-    chart : this._chart,
-    key   : this.key,
-    title : this.title
+    rawChart : this._chart,
+    key      : this.key,
+    title    : this.title
   };
 };
 
-// interval:   -1|0|1|2|...
-// quality:    -2|-1|0|1 (dim|min|maj|aug)
-// add:        0|2|6|7|9|...
-function Chord(chart, interval, quality, add) {
-  this.chart      = chart;
-  this.simile     = interval === -1;
-  this.interval   = interval   || 0;
-  this.quality    = quality    || 0;
-  this.add        = add        || 0;
+Chart.prototype.reviveChart = function(rawChart) {
+  var that = this;
+  $.each(rawChart, function(i, row) {
+    that._chart.push([]);
+    $.each(row, function(j, rawChord) {
+      that._chart[i].push(new Chord(that, rawChord));
+    });
+  });
+};
+
+// options:
+//   interval:   0|1|2|...
+//   quality:    -2|-1|0|1 (dim|min|maj|aug)
+//   add:        0|2|6|7|9|...
+function Chord(chart, options) {
+  this.chart = chart;
+  if (options && !options.simile) {
+    this.interval = options.interval || 0;
+    this.quality  = options.quality  || 0;
+    this.add      = options.add      || 0;
+  } else {
+    this.simile = true;
+  }
 }
 
 Chord.prototype.toString = function() {
@@ -99,4 +117,13 @@ Chord.prototype.toString = function() {
 
 Chord.prototype.renderInto = function(selector) {
   $(selector).html(this.toString());
+};
+
+Chord.prototype.toJSON = function() {
+  return {
+    interval : this.interval,
+    quality  : this.quality,
+    add      : this.add,
+    simile   : this.simile
+  };
 };
