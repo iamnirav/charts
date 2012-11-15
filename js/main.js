@@ -28,17 +28,23 @@ $(function() {
     return false;
   });
 
-  $('.chart-wrapper').on('click touchend', function(e) {
-    $(e.target).addClass('editing');
-    $('#chord-editor-modal').modal();
+  $('.chart-wrapper').on('mousedown touchstart', function(e) {
+    var $cell = $(e.target);
+    $cell.addClass('editing');
     return false;
   });
 
-  $('#chord-editor-modal .chord-option').on('click touchend', function(e) {
-    $(this)
-      .addClass('selected')
-      .siblings('.chord-option')
-      .removeClass('selected');
+  $('.chart-wrapper').on('click touchend', function(e) {
+    var $cell = $(e.target);
+    var success = function(newChord) {
+      newChord.renderInto($cell);
+      $cell.removeClass('editing');
+    };
+    var failure = function() {
+      $cell.removeClass('editing');
+    };
+    ChordEditor.edit($chart.getChordFromCell($cell), success, failure);
+    return false;
   });
 
 });

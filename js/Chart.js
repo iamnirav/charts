@@ -2,6 +2,7 @@
 // Requires notes.js
 
 function Chart(options) {
+  options = options || {};
   this._chart = options.chart || [];
   this.key    = options.key   || 0; // C
   this.title  = options.title || "Enter a title...";
@@ -24,6 +25,16 @@ Chart.prototype.addChord = function(row, col, interval, quality, add) {
   this._chart[row][col] = new Chord(this, interval, quality, add);
 };
 
+Chart.prototype.getChord = function(row, col) {
+  if (row < this._chart.length && col < this._chart[row].length) {
+    return this._chart[row][col];
+  }
+};
+
+Chart.prototype.getChordFromCell = function($cell) {
+  return this.getChord($cell.data('row'), $cell.data('col'));
+};
+
 Chart.prototype.renderInto = function(selector) {
   $table = $('<table>').addClass('table table-bordered chart');
   $.each(this._chart, function(i, row) {
@@ -31,6 +42,10 @@ Chart.prototype.renderInto = function(selector) {
     $.each(row, function(j, chord) {
       $('<td>')
         .html(chord.toString())
+        .attr({
+          'data-row': i,
+          'data-col': j
+        })
         .appendTo($row);
     });
     $table.append($row);
@@ -80,4 +95,8 @@ Chord.prototype.toString = function() {
            (this.quality    ===  1 ? '+'      : '') +
            (this.add || '');
   }
+};
+
+Chord.prototype.renderInto = function(selector) {
+  $(selector).html(this.toString());
 };
