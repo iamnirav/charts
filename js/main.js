@@ -39,11 +39,19 @@ $(function() {
     var deselect = function() {
       $cell.animate(
         {
-          backgroundColor: '#fff',
+          backgroundColor: '#f5f5f5',
           color: '#333'
         },
+        200, // Duration
         function() {
-          $cell.removeClass('editing');
+
+          // Remove inline styles to return control to the stylesheet
+          $(this).css({
+            backgroundColor: '',
+            color: ''
+          });
+
+          $(this).removeClass('editing');
         }
       );
     };
