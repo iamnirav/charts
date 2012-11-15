@@ -36,12 +36,23 @@ $(function() {
 
   $('.chart-wrapper').on('click touchend', function(e) {
     var $cell = $(e.target);
+    var deselect = function() {
+      $cell.animate(
+        {
+          backgroundColor: '#fff',
+          color: '#333'
+        },
+        function() {
+          $cell.removeClass('editing');
+        }
+      );
+    };
     var success = function(newChord) {
       newChord.renderInto($cell);
-      $cell.removeClass('editing');
+      deselect();
     };
     var failure = function() {
-      $cell.removeClass('editing');
+      deselect();
     };
     ChordEditor.edit($chart.getChordFromCell($cell), success, failure);
     return false;
