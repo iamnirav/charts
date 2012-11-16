@@ -63,7 +63,7 @@ $(function() {
           backgroundColor: '#f5f5f5',
           color: '#333'
         },
-        300, // Duration
+        350, // Duration
         function() {
 
           // Remove inline styles to return control to the stylesheet
