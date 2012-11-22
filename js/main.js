@@ -28,6 +28,7 @@ $(function() {
 
   $song.renderInto('.chart-wrapper');
   $song.renderTitleInto('.song-title');
+  $song.renderKeyInto('.transpose-key-btn');
 
   // Prevent elastic scrolling
   $('body').on('touchmove', function(e) {
@@ -39,12 +40,14 @@ $(function() {
   $('.transpose-down-btn').on('click touchend', function(e) {
     $song.setKey($song.key - 1);
     $song.renderInto('.chart-wrapper');
+    $song.renderKeyInto('.transpose-key-btn');
     return false;
   });
 
   $('.transpose-up-btn').on('click touchend', function(e) {
     $song.setKey($song.key + 1);
     $song.renderInto('.chart-wrapper');
+    $song.renderKeyInto('.transpose-key-btn');
     return false;
   });
 

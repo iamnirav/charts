@@ -59,6 +59,9 @@ function pitchToInterval(key, pitch) {
 // Takes a key numeral and a semitone interval (i.e., 4, 4) and returns a letter pitch (E)
 function intervalToPitch(key, interval) {
 
+  // Interval can be undefined if you just want a pitch
+  interval = interval || 0;
+
   // Add interval to key
   var note = key + interval;
 

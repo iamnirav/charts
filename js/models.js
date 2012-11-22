@@ -96,6 +96,10 @@ Song.prototype.renderTitleInto = function(selector) {
   $(selector).html(this.title);
 };
 
+Song.prototype.renderKeyInto = function(selector) {
+  $(selector).html(intervalToPitch(this.key).toUpperCase());
+};
+
 Song.prototype.setKey = function(key) {
   if (key < 0) {
     key += 12;
