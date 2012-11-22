@@ -62,7 +62,7 @@ ChordEditor.$find('.chord-option').on('mousedown touchstart', function(e) {
   return false
 });
 
-ChordEditor.$find('.modal-footer .btn-danger').on('click touchend', function(e) {
+ChordEditor.$find('.modal-footer .close-btn').on('click touchend', function(e) {
   ChordEditor.close();
   ChordEditor.failure();
   return false;

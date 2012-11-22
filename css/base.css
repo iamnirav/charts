@@ -53,10 +53,6 @@ h4 {
   clear: both;
 }
 
-#chord-editor-modal .chord-section {
-
-}
-
 #chord-editor-modal .chord-option {
   float: left;
   width: 52px;
@@ -70,6 +66,13 @@ h4 {
 }
 
 #chord-editor-modal .chord-option.selected {
+  background: #333;
+  color: #fff;
+}
+
+/* Song Library */
+
+#song-library-modal .song-list tr.selected {
   background: #333;
   color: #fff;
 }

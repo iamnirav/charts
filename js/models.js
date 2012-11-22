@@ -97,7 +97,7 @@ Song.prototype.renderTitleInto = function(selector) {
 };
 
 Song.prototype.renderKeyInto = function(selector) {
-  $(selector).html(intervalToPitch(this.key).toUpperCase());
+  $(selector).html(this.letterKey());
 };
 
 Song.prototype.setKey = function(key) {
@@ -107,6 +107,10 @@ Song.prototype.setKey = function(key) {
     key -= 12;
   }
   this.key = key;
+};
+
+Song.prototype.letterKey = function() {
+  return intervalToPitch(this.key).toUpperCase();
 };
 
 Song.prototype.toJSON = function() {

@@ -56,14 +56,14 @@ $(function() {
     return false;
   });
 
-  $('.chart-wrapper').on('mousedown touchstart', function(e) {
-    var $cell = $(e.target);
+  $('.chart-wrapper').on('mousedown touchstart', 'td', function(e) {
+    var $cell = $(this);
     $cell.addClass('editing');
     return false;
   });
 
-  $('.chart-wrapper').on('click touchend', function(e) {
-    var $cell = $(e.target);
+  $('.chart-wrapper').on('click touchend', 'td', function(e) {
+    var $cell = $(this);
     var deselect = function() {
       $cell.animate(
         {

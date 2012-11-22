@@ -44,11 +44,19 @@
       <h3>Song Library</h3>
     </div>
     <div class="modal-body">
-      <ol class="song-list">
-      </ol>
+      <table class="table song-list">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Key</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-large" data-dismiss="modal">Cancel</button>
+      <button class="btn btn-large pull-left new-song-btn"><i class="icon-plus"></i></button>
+      <button class="btn btn-large close-btn">Cancel</button>
       <button class="btn btn-large btn-primary">Open</button>
     </div>
   </div>
@@ -97,7 +105,7 @@
 
     </div>
     <div class="modal-footer">
-      <button class="btn btn-large btn-danger">Cancel</button>
+      <button class="btn btn-large btn-danger close-btn">Cancel</button>
       <button class="btn btn-large btn-primary">Save</button>
     </div>
   </div>
