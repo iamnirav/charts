@@ -126,6 +126,7 @@ Song.prototype.reviveChart = function(chart) {
 
 Song.prototype.save = function() {
   localStorage[this.id] = JSON.stringify({'Song': this});
+  SongLibrary.isDirty = true;
   debug('Song.prototype.save: Saved song ' + this.id + ' to localStorage');
 };
 
