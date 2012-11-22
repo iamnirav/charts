@@ -2,30 +2,20 @@
 // http://www.sitepen.com/blog/2011/12/07/touching-and-gesturing-on-iphone-android-and-more/
 // To deploy: ./deploy.sh
 
+DEBUG = true;
+
+function debug(arg) {
+  DEBUG && console.log(arg);
+}
+
 $(function() {
 
-  if (localStorage.chart) {
+  // Load song from either localStorage or fixture data
+  $song = localStorage.song ? Song.open() : loadFixtures();
+  $song.save();
 
-    // revive saved charts
-    var reviver = function(key, value) {
-      if (key === 'theChart') {
-        return new Chart(value);
-      } else {
-        return value;
-      }
-    };
-    $chart = JSON.parse(localStorage.chart, reviver).theChart;
-    $chart.renderInto('.chart-wrapper');
-    $chart.renderTitleInto('.chart-title');
-    console.log('Loaded chart from localStorage');
-
-  } else {
-
-    // Load fixture data and save to localStorage.chart
-    fixtures();
-    localStorage.chart = JSON.stringify({theChart: $chart});
-    console.log('Loaded chart from fixture data');
-  }
+  $song.renderInto('.chart-wrapper');
+  $song.renderTitleInto('.chart-title');
 
   // Prevent elastic scrolling
   $('body').on('touchmove', function(e) {
@@ -33,14 +23,14 @@ $(function() {
   });
 
   $('.transpose-down-btn').on('click touchend', function(e) {
-    $chart.setKey($chart.key - 1);
-    $chart.renderInto('.chart-wrapper');
+    $song.setKey($song.key - 1);
+    $song.renderInto('.chart-wrapper');
     return false;
   });
 
   $('.transpose-up-btn').on('click touchend', function(e) {
-    $chart.setKey($chart.key + 1);
-    $chart.renderInto('.chart-wrapper');
+    $song.setKey($song.key + 1);
+    $song.renderInto('.chart-wrapper');
     return false;
   });
 
@@ -83,7 +73,7 @@ $(function() {
     var failure = function() {
       deselect();
     };
-    ChordEditor.edit($chart.getChordFromCell($cell), success, failure);
+    ChordEditor.edit($song.getChordFromCell($cell), success, failure);
     return false;
   });
 

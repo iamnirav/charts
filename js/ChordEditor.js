@@ -40,6 +40,7 @@ ChordEditor = {
     this.chord.interval = this.$find('.chord-option[data-interval].selected').data('interval');
     this.chord.quality = this.$find('.chord-option[data-quality].selected').data('quality');
     this.chord.add = this.$find('.chord-option[data-add].selected').data('add');
+    this.chord.save(); // Anything else the chord needs to do
   },
 
   open: function() {
