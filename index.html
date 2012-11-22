@@ -20,9 +20,9 @@
     <div class="btn-toolbar">
 
       <!-- Song selector -->
-      <button class="btn btn-large chart-library-btn"><i class="icon-th-list"></i></button>
+      <button class="btn btn-large song-library-btn"><i class="icon-th-list"></i></button>
 
-      <button class="btn btn-large chart-title"></button>
+      <button class="btn btn-large song-title"></button>
 
       <!-- Transpose controls -->
       <div class="btn-group">
@@ -37,14 +37,15 @@
     </div>
   </div>
 
-  <!-- Chart Library -->
-  <div id="chart-library-modal" class="modal hide" tabindex="-1" role="dialog">
+  <!-- Song Library -->
+  <div id="song-library-modal" class="modal hide" tabindex="-1" role="dialog">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h3>Chart Library</h3>
+      <h3>Song Library</h3>
     </div>
     <div class="modal-body">
-      <p>Pick a chart, any chart.</p>
+      <ol class="song-list">
+      </ol>
     </div>
     <div class="modal-footer">
       <button class="btn btn-large" data-dismiss="modal">Cancel</button>
@@ -106,6 +107,7 @@
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/notes.js"></script>
   <script type="text/javascript" src="js/ChordEditor.js"></script>
+  <script type="text/javascript" src="js/SongLibrary.js"></script>
   <script type="text/javascript" src="js/models.js"></script>
   <script type="text/javascript" src="js/fixtures.js"></script>
   <script type="text/javascript" src="js/main.js"></script>

@@ -1,5 +1,6 @@
 // http://matt.might.net/articles/how-to-native-iphone-ipad-apps-in-javascript/
 // http://www.sitepen.com/blog/2011/12/07/touching-and-gesturing-on-iphone-android-and-more/
+
 // To deploy: ./deploy.sh
 
 DEBUG = true;
@@ -10,17 +11,30 @@ function debug(arg) {
 
 $(function() {
 
-  // Load song from either localStorage or fixture data
-  $song = localStorage.song ? Song.open() : loadFixtures();
+  var $song = false;
+  for (var key in localStorage) {
+    if (key.indexOf('Song') === 0) {
+      $song = Song.open(key);
+      break;
+    }
+  }
+
+  // If no saved songs found, load from fixture data
+  if (!$song) {
+    $song = loadFixtures();
+  }
+
   $song.save();
 
   $song.renderInto('.chart-wrapper');
-  $song.renderTitleInto('.chart-title');
+  $song.renderTitleInto('.song-title');
 
   // Prevent elastic scrolling
   $('body').on('touchmove', function(e) {
     return false;
   });
+
+  // TODO(nirav) refactor all of the below into a Toolbar.js
 
   $('.transpose-down-btn').on('click touchend', function(e) {
     $song.setKey($song.key - 1);
@@ -34,8 +48,8 @@ $(function() {
     return false;
   });
 
-  $('.chart-library-btn').on('click touchend', function(e) {
-    $('#chart-library-modal').modal();
+  $('.song-library-btn').on('click touchend', function(e) {
+    SongLibrary.open();
     return false;
   });
 

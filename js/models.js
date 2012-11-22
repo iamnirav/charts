@@ -6,26 +6,43 @@
 // CONSTRUCTOR
 
 function Song(options) {
-  options    = options || {};
-  this.chart = [];
-  this.key   = options.key || 0; // C
+  options    = options       || {};
+  this.id    = options.id    || Song.generateId();
+  this.key   = options.key   || 0; // C
   this.title = options.title || "Enter a title...";
+  this.chart = [];
 
   options.chart && this.reviveChart(options.chart);
 }
 
 // CLASS METHODS
 
-Song.open = function() {
+Song.open = function(id) {
+
+  if (!localStorage[id]) {
+    debug('Error in Song.open: Tried to open a nonexistent song')
+    return false;
+  }
 
   // revive saved charts
   var reviver = function(key, value) {
     return (key === 'Song') ? (new Song(value)) : value;
   };
 
-  var parsed = JSON.parse(localStorage.song, reviver);
-  debug('Loaded song from localStorage');
+  var parsed = JSON.parse(localStorage[id], reviver);
+  debug('Song.open: Loaded song ' + id + ' from localStorage');
   return parsed.Song;
+};
+
+Song.generateId = function() {
+
+  // http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript/2117523#2117523
+  var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+    return v.toString(16);
+  });
+
+  return 'Song:' + guid;
 };
 
 // INSTANCE METHODS
@@ -90,8 +107,9 @@ Song.prototype.setKey = function(key) {
 
 Song.prototype.toJSON = function() {
   return {
-    chart : this.chart,
+    id    : this.id,
     key   : this.key,
+    chart : this.chart,
     title : this.title
   };
 };
@@ -107,8 +125,8 @@ Song.prototype.reviveChart = function(chart) {
 };
 
 Song.prototype.save = function() {
-  localStorage.song = JSON.stringify({Song: this});
-  debug('Saved song to localStorage');
+  localStorage[this.id] = JSON.stringify({'Song': this});
+  debug('Song.prototype.save: Saved song ' + this.id + ' to localStorage');
 };
 
 // options:

@@ -1,6 +1,6 @@
 function loadFixtures() {
 
-  var $song = new Song();
+  var $song = new Song({title:"After You've Gone"});
 
   $song.addChord(0, 0, {interval:0,quality:0,add:6});
   $song.addChord(0, 1);
