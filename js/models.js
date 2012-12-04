@@ -57,12 +57,24 @@ Song.prototype.addChord = function(row, col, options) {
 
   // Add simile cells to accomodate the new chord if necessary
   while (col > this.chart[row].length - 1) {
-    this.chart[row].push(new Chord(this, -1));
+    this.chart[row].push(new Chord(this));
   }
 
   // Create new Chord object and add to chart at the right place
   this.chart[row][col] = new Chord(this, options);
 };
+
+Song.prototype.addRow = function() {
+  this.addChord(this.chart.length, 7);
+  // TODO(nirav) maybe render here?
+};
+
+// TODO(nirav) make a more general row deleter
+Song.prototype.deleteLastRow = function() {
+  if (this.chart.length) {
+    this.chart.pop(); // TODO(nirav) how to properly remove?!?!
+  }
+}
 
 Song.prototype.getChord = function(row, col) {
   if (row < this.chart.length && col < this.chart[row].length) {
@@ -180,4 +192,24 @@ Chord.prototype.toJSON = function() {
 
 Chord.prototype.save = function() {
   this.song.save();
+};
+
+Chord.prototype.getPitch = function() {
+
+  // TODO(nirav) this functionality is duplicated in notes.js
+  var note = this.song.key + this.interval;
+  return note > 11 ? note - 12 : note;
+};
+
+Chord.prototype.setPitch = function(pitch) {
+
+  // TODO(nirav) this is so hacky, instead I should have a separate toggle the
+  // chord editor for a simile bar
+  if (pitch !== undefined) {
+    this.simile = false;
+  }
+
+  // TODO(nirav) this functionality is duplicated in notes.js
+  var diff = pitch - this.song.key;
+  this.interval = diff < 0 ?  diff + 12 : diff;
 };

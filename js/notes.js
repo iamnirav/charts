@@ -1,6 +1,7 @@
 // Functions to help store notes
 // http://en.wikipedia.org/wiki/Pitch_class#Integer_notation
 // Flat sign: &#9837;
+// Sharp sign: &#9839;
 
 var _letterToNumeral = {
   'c' : 0,
@@ -69,4 +70,3 @@ function intervalToPitch(key, interval) {
   // TODO: intelligently figure out which version of the pitch to use
   return _numeralToLetter[note > 11 ? note - 12 : note][0];
 }
-

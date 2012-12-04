@@ -20,7 +20,7 @@ ChordEditor = {
 
     // Set up options based on chord
     this.$find('.chord-option').removeClass('selected');
-    this.$find('.chord-option[data-interval="' + chord.interval + '"]').addClass('selected');
+    this.$find('.chord-option[data-pitch="' + chord.getPitch() + '"]').addClass('selected');
     this.$find('.chord-option[data-quality="' + chord.quality + '"]').addClass('selected');
     this.$find('.chord-option[data-add="' + chord.add + '"]').addClass('selected');
 
@@ -37,7 +37,7 @@ ChordEditor = {
   save: function() {
 
     // save to chord object
-    this.chord.interval = this.$find('.chord-option[data-interval].selected').data('interval');
+    this.chord.setPitch(this.$find('.chord-option[data-pitch].selected').data('pitch'));
     this.chord.quality = this.$find('.chord-option[data-quality].selected').data('quality');
     this.chord.add = this.$find('.chord-option[data-add].selected').data('add');
 

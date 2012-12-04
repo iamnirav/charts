@@ -56,6 +56,18 @@ $(function() {
     return false;
   });
 
+  $('.add-row-btn').on('click touchend', function(e) {
+    $song.addRow();
+    $song.save();
+    $song.renderInto('.chart-wrapper');
+  });
+
+  $('.delete-last-row-btn').on('click touchend', function(e) {
+    $song.deleteLastRow();
+    $song.save();
+    $song.renderInto('.chart-wrapper');
+  });
+
   $('.chart-wrapper').on('mousedown touchstart', 'td', function(e) {
     var $cell = $(this);
     $cell.addClass('editing');
