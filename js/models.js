@@ -156,13 +156,13 @@ Song.prototype.save = function() {
 //   add:        0|2|6|7|9|...
 function Chord(song, options) {
   this.song = song;
-  if (options && !options.simile) {
-    this.interval = options.interval || 0;
-    this.quality  = options.quality  || 0;
-    this.add      = options.add      || 0;
-  } else {
-    this.simile = true;
-  }
+  this.simile = !options || options.simile;
+
+  options = options || {};
+
+  this.interval = options.interval || 0;
+  this.quality  = options.quality  || 0;
+  this.add      = options.add      || 0;
 }
 
 Chord.prototype.toString = function() {
@@ -170,9 +170,9 @@ Chord.prototype.toString = function() {
     return '%';
   } else {
     return intervalToPitch(this.song.key, this.interval).toUpperCase() +
-           (this.quality    === -1 ? '&ndash;' : '') +
-           (this.quality    === -2 ? '&deg;'  : '') +
-           (this.quality    ===  1 ? '+'      : '') +
+           (this.quality === -1 ? '&ndash;' : '') +
+           (this.quality === -2 ? '&deg;'   : '') +
+           (this.quality ===  1 ? '+'       : '') +
            (this.add || '');
   }
 };
@@ -202,12 +202,6 @@ Chord.prototype.getPitch = function() {
 };
 
 Chord.prototype.setPitch = function(pitch) {
-
-  // TODO(nirav) this is so hacky, instead I should have a separate toggle the
-  // chord editor for a simile bar
-  if (pitch !== undefined) {
-    this.simile = false;
-  }
 
   // TODO(nirav) this functionality is duplicated in notes.js
   var diff = pitch - this.song.key;

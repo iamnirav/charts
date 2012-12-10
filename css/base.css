@@ -70,6 +70,11 @@ h4 {
   color: #fff;
 }
 
+/* Make icon use white version when selected, same as applying the icon-white class */
+#chord-editor-modal .chord-option.selected .icon-music {
+  background-image: url("../img/glyphicons-halflings-white.png");
+}
+
 /* Song Library */
 
 #song-library-modal .song-list tr.selected {

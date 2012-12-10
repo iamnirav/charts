@@ -53,11 +53,15 @@
             <th>Key</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          <tr class="new-song-row">
+            <td><input class="song-title" type="text" placeholder="New song title..."></td>
+            <td><input class="song-key"   type="text" placeholder="New song key..."></td>
+          </tr>
+        </tbody>
       </table>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-large pull-left new-song-btn"><i class="icon-plus"></i></button>
       <button class="btn btn-large close-btn">Cancel</button>
       <button class="btn btn-large btn-primary">Open</button>
     </div>
@@ -70,6 +74,12 @@
       <h3>Edit Chord</h3>
     </div>
     <div class="modal-body">
+
+      <div class="chord-section-header">Type</div>
+      <div class="chord-section" data-section="type">
+        <div class="chord-option" data-type="0">%</div>
+        <div class="chord-option" data-type="1"><i class="icon-music"></i></div>
+      </div>
 
       <div class="chord-section-header">Base</div>
       <div class="chord-section">

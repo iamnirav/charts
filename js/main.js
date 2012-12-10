@@ -11,7 +11,7 @@ function debug(arg) {
 
 $(function() {
 
-  var $song = false;
+  $song = false;
   for (var key in localStorage) {
     if (key.indexOf('Song') === 0) {
       $song = Song.open(key);

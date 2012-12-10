@@ -64,7 +64,7 @@ function intervalToPitch(key, interval) {
   interval = interval || 0;
 
   // Add interval to key
-  var note = key + interval;
+  var note = parseInt(key) + parseInt(interval);
 
   // Look up the actual pitch
   // TODO: intelligently figure out which version of the pitch to use

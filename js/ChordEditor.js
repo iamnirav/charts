@@ -20,6 +20,7 @@ ChordEditor = {
 
     // Set up options based on chord
     this.$find('.chord-option').removeClass('selected');
+    this.$find('.chord-option[data-type="' + (chord.simile ? 0 : 1) + '"]').addClass('selected');
     this.$find('.chord-option[data-pitch="' + chord.getPitch() + '"]').addClass('selected');
     this.$find('.chord-option[data-quality="' + chord.quality + '"]').addClass('selected');
     this.$find('.chord-option[data-add="' + chord.add + '"]').addClass('selected');
@@ -37,9 +38,10 @@ ChordEditor = {
   save: function() {
 
     // save to chord object
-    this.chord.setPitch(this.$find('.chord-option[data-pitch].selected').data('pitch'));
-    this.chord.quality = this.$find('.chord-option[data-quality].selected').data('quality');
-    this.chord.add = this.$find('.chord-option[data-add].selected').data('add');
+    this.chord.simile = !parseInt(this.$find('.chord-option[data-type].selected').data('type'));
+    this.chord.setPitch(parseInt(this.$find('.chord-option[data-pitch].selected').data('pitch')));
+    this.chord.quality = parseInt(this.$find('.chord-option[data-quality].selected').data('quality'));
+    this.chord.add = parseInt(this.$find('.chord-option[data-add].selected').data('add'));
 
     // TODO(nirav) make this render the new chord too!
     this.chord.save(); // Anything else the chord needs to do
@@ -58,8 +60,14 @@ ChordEditor = {
 // Bind to events
 
 ChordEditor.$find('.chord-option').on('mousedown touchstart', function(e) {
-  ChordEditor.select(e.target);
-  return false
+
+  // Turn off simile bar if you're editing anything else
+  if (!$(this).is('[data-type]')) {
+    ChordEditor.select('.chord-option[data-type="1"]');
+  }
+
+  ChordEditor.select($(this));
+  return false;
 });
 
 ChordEditor.$find('.modal-footer .close-btn').on('click touchend', function(e) {
