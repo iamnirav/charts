@@ -56,6 +56,11 @@ $(function() {
     return false;
   });
 
+  $('.song-details-btn').on('click touchend', function(e) {
+    SongEditor.open();
+    return false;
+  });
+
   $('.add-row-btn').on('click touchend', function(e) {
     $song.addRow();
     $song.save();
