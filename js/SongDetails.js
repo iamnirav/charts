@@ -33,6 +33,7 @@ SongDetails = {
     $song = undefined; // bye bye
     $('.chart-wrapper, .song-title, .transpose-key-btn').empty();
     this.close();
+    this.cancelDelete(); // re-hide the "really delete" button
     SongLibrary.open();
   }
 
