@@ -39,6 +39,28 @@
     <button class="btn btn-large delete-last-row-btn">Delete Last Row</button>
   </div>
 
+  <!-- Song Details -->
+  <div id="song-details-modal" class="modal hide" tabindex="-1" role="dialog">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h3>Song Details</h3>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+
+      <button class="btn btn-large btn-warning pull-left confirm-delete-btn"><i class="icon-trash icon-white"></i></button>
+
+      <div class="delete-confirmation hide">
+        <button class="btn btn-large pull-left cancel-delete-btn"><i class="icon-remove"></i></button>
+        <button class="btn btn-large btn-danger pull-left really-delete-btn"><i class="icon-fire icon-white"></i></button>
+      </div>
+
+      <button class="btn btn-large close-btn">Cancel</button>
+      <button class="btn btn-large btn-primary">Save</button>
+    </div>
+  </div>
+
   <!-- Song Library -->
   <div id="song-library-modal" class="modal hide" tabindex="-1" role="dialog">
     <div class="modal-header">

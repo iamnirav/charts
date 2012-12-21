@@ -150,6 +150,12 @@ Song.prototype.save = function() {
   debug('Song.prototype.save: Saved song ' + this.id + ' to localStorage');
 };
 
+Song.prototype.delete = function() {
+  delete localStorage[this.id];
+  SongLibrary.isDirty = true;
+  debug('Song.prototype.delete: Deleted song ' + this.id + ' from localStorage');
+};
+
 // options:
 //   interval:   0|1|2|...
 //   quality:    -2|-1|0|1 (dim|min|maj|aug)
