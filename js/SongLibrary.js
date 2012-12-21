@@ -70,18 +70,29 @@ SongLibrary.$find('.modal-footer .close-btn').on('click touchend', function(e) {
 });
 
 SongLibrary.$find('.modal-footer .btn-primary').on('click touchend', function(e) {
+
+  // Grab the selected element
   var $selected = SongLibrary.$find('.song-list tbody tr.selected');
-  var tmpSong = Song.open($selected.data('id'));
-  if (!tmpSong) {
+
+  // Open the song if it exists; otherwise create it
+  if ($selected.data('id')) {
+    $song = Song.open($selected.data('id'));
+  } else {
     var newTitle = $selected.find('.song-title').val();
     var newKey   = parseInt($selected.find('.song-key').val());
-    tmpSong = new Song({title:newTitle,key:newKey});
+    $song = new Song({title:newTitle,key:newKey});
   }
-  $song = tmpSong;
+
+  // Open song
   $song.renderInto('.chart-wrapper');
   $song.renderTitleInto('.song-title');
   $song.renderKeyInto('.transpose-key-btn');
   $song.save();
+
   SongLibrary.close();
+
+  // Clear the new song input fields
+  $selected.find('.song-title').add('.song-key').val('');
+
   return false;
 });
