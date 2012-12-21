@@ -57,7 +57,7 @@ $(function() {
   });
 
   $('.song-details-btn').on('click touchend', function(e) {
-    SongEditor.open();
+    SongDetails.open();
     return false;
   });
 
