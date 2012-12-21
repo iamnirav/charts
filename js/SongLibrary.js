@@ -16,7 +16,7 @@ SongLibrary = {
   },
 
   select: function(selector) {
-    $(selector)
+    this.$find(selector)
       .addClass('selected')
       .siblings('tr')
       .removeClass('selected');
@@ -49,6 +49,10 @@ SongLibrary = {
           .appendTo(that.$find('.song-list tbody'));
       });
       this.isDirty = false;
+    }
+
+    if ($song) {
+      this.select('tr[data-id="' + $song.id + '"]');
     }
 
     // You can only cancel if there's an existing song
