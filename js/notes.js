@@ -43,8 +43,8 @@ var _numeralToLetter = {
 }
 
 // Translates a pitch into its numeral
-function getPitchNumeral(pitch) {
-  return _letterToNumeral(pitch.toLowerCase());
+function pitchToNumeral(pitch) {
+  return (pitch && pitch.toLowerCase) ? _letterToNumeral[pitch.toLowerCase()] : undefined;
 }
 
 // Takes a key and a pitch (e.g., C, G) and returns a semitone interval (7)

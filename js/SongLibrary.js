@@ -59,7 +59,10 @@ SongLibrary = {
     this.cancellable = !!$song;
     this.$find('.modal-footer .close-btn').toggleClass('disabled', !this.cancellable);
 
-    this.$node.modal('show');
+    this.$node.modal({
+      show: true,
+      backdrop: 'static'
+    });
   },
 
   close: function() {
@@ -91,7 +94,10 @@ SongLibrary.$find('.modal-footer .btn-primary').on('click touchend', function(e)
     $song = Song.open($selected.data('id'));
   } else {
     var newTitle = $selected.find('.song-title').val();
-    var newKey   = parseInt($selected.find('.song-key').val());
+    var newKey = pitchToNumeral($selected.find('.song-key').val());
+    if (newTitle.length === 0 || newKey === undefined) {
+      return false;
+    }
     $song = new Song({title:newTitle,key:newKey});
   }
 
