@@ -42,18 +42,18 @@ h4 {
   color: #fff;
 }
 
-/* Chord editor */
+/* Modals */
 
-#chord-editor-modal {
+.modal {
   width: 740px;
   margin-left: -370px;
 }
 
-#chord-editor-modal .chord-section-header {
+.modal .section-header {
   clear: both;
 }
 
-#chord-editor-modal .chord-option {
+.modal .option {
   float: left;
   width: 52px;
   height: 36px;
@@ -65,13 +65,13 @@ h4 {
   padding-top: 16px;
 }
 
-#chord-editor-modal .chord-option.selected {
+.modal .option.selected {
   background: #333;
   color: #fff;
 }
 
 /* Make icon use white version when selected, same as applying the icon-white class */
-#chord-editor-modal .chord-option.selected .icon-music {
+.modal .option.selected .icon-music {
   background-image: url("../img/glyphicons-halflings-white.png");
 }
 

@@ -6,11 +6,12 @@
 // CONSTRUCTOR
 
 function Song(options) {
-  options    = options       || {};
-  this.id    = options.id    || Song.generateId();
-  this.key   = options.key   || 0; // C
-  this.title = options.title || "Enter a title...";
-  this.chart = [];
+  options      = options         || {};
+  this.id      = options.id      || Song.generateId();
+  this.key     = options.key     || 0; // C
+  this.title   = options.title   || "Enter a title...";
+  this.chart   = [];
+  this.favKeys = options.favKeys || [this.key];
 
   options.chart && this.reviveChart(options.chart);
 }
@@ -112,6 +113,15 @@ Song.prototype.renderKeyInto = function(selector) {
   $(selector).html(this.letterKey());
 };
 
+Song.prototype.renderFavKeysInto = function(selector) {
+  var that = this;
+  var html = $.map(this.favKeys, function(value) {
+    var thisKeyClass = that.key == value ? ' btn-info' : '';
+    return '<button class="btn btn-large' + thisKeyClass + '" data-key="' + value + '">' + intervalToPitch(value).toUpperCase() + '</button>';
+  }).join();
+  $(selector).html(html);
+};
+
 Song.prototype.setKey = function(key) {
   if (key < 0) {
     key += 12;
@@ -127,10 +137,11 @@ Song.prototype.letterKey = function() {
 
 Song.prototype.toJSON = function() {
   return {
-    id    : this.id,
-    key   : this.key,
-    chart : this.chart,
-    title : this.title
+    id      : this.id,
+    key     : this.key,
+    chart   : this.chart,
+    title   : this.title,
+    favKeys : this.favKeys
   };
 };
 

@@ -28,7 +28,7 @@ $(function() {
 
   $song.renderInto('.chart-wrapper');
   $song.renderTitleInto('.song-title');
-  $song.renderKeyInto('.transpose-key-btn');
+  $song.renderFavKeysInto('.fav-keys-group');
 
   // Prevent elastic scrolling
   $('body').on('touchmove', function(e) {
@@ -37,18 +37,20 @@ $(function() {
 
   // TODO(nirav) refactor all of the below into a Toolbar.js
 
-  $('.transpose-down-btn').on('click touchend', function(e) {
-    $song.setKey($song.key - 1);
-    $song.renderInto('.chart-wrapper');
-    $song.renderKeyInto('.transpose-key-btn');
-    return false;
-  });
+  $('.fav-keys-group').on('click touchend', 'button', function(e) {
 
-  $('.transpose-up-btn').on('click touchend', function(e) {
-    $song.setKey($song.key + 1);
+    // Set the key on the song object
+    $song.setKey(parseInt($(this).data('key')));
+
+    // Update classes to highlight the right button
+    $(this)
+      .addClass('btn-info')
+      .siblings('.btn')
+      .removeClass('btn-info');
+
+    // Save 'n render
+    $song.save();
     $song.renderInto('.chart-wrapper');
-    $song.renderKeyInto('.transpose-key-btn');
-    return false;
   });
 
   $('.song-library-btn').on('click touchend', function(e) {

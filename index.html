@@ -25,18 +25,19 @@
       <button class="btn btn-large song-title song-details-btn"></button>
 
       <!-- Transpose controls -->
-      <div class="btn-group">
-        <button class="btn btn-large transpose-down-btn"><i class="icon-chevron-left"></i></button>
+      <div class="btn-group fav-keys-group">
         <button class="btn btn-large transpose-key-btn"></button>
-        <button class="btn btn-large transpose-up-btn"><i class="icon-chevron-right"></i></button>
       </div>
 
     </div>
 
     <div class="chart-wrapper">
     </div>
-    <button class="btn btn-large add-row-btn">Add Row</button>
-    <button class="btn btn-large delete-last-row-btn">Delete Last Row</button>
+
+    <div class="btn-toolbar pull-right">
+      <button class="btn btn-large add-row-btn">Add Row</button>
+      <button class="btn btn-large delete-last-row-btn">Delete Last Row</button>
+    </div>
   </div>
 
   <!-- Song Details -->
@@ -46,6 +47,21 @@
       <h3>Song Details</h3>
     </div>
     <div class="modal-body">
+      <div class="section-header">Favorite Keys</div>
+      <div class="section">
+        <div class="option" data-key="0">C</div>
+        <div class="option" data-key="1">C&#9839;</div>
+        <div class="option" data-key="2">D</div>
+        <div class="option" data-key="3">D&#9839;</div>
+        <div class="option" data-key="4">E</div>
+        <div class="option" data-key="5">F</div>
+        <div class="option" data-key="6">F&#9839;</div>
+        <div class="option" data-key="7">G</div>
+        <div class="option" data-key="8">G&#9839;</div>
+        <div class="option" data-key="9">A</div>
+        <div class="option" data-key="10">A&#9839;</div>
+        <div class="option" data-key="11">B</div>
+      </div>
     </div>
     <div class="modal-footer">
 
@@ -97,44 +113,44 @@
     </div>
     <div class="modal-body">
 
-      <div class="chord-section-header">Type</div>
-      <div class="chord-section" data-section="type">
-        <div class="chord-option" data-type="0">%</div>
-        <div class="chord-option" data-type="1"><i class="icon-music"></i></div>
+      <div class="section-header">Type</div>
+      <div class="section" data-section="type">
+        <div class="option" data-type="0">%</div>
+        <div class="option" data-type="1"><i class="icon-music"></i></div>
       </div>
 
-      <div class="chord-section-header">Base</div>
-      <div class="chord-section">
-        <div class="chord-option" data-pitch="0">C</div>
-        <div class="chord-option" data-pitch="1">C&#9839;</div>
-        <div class="chord-option" data-pitch="2">D</div>
-        <div class="chord-option" data-pitch="3">D&#9839;</div>
-        <div class="chord-option" data-pitch="4">E</div>
-        <div class="chord-option" data-pitch="5">F</div>
-        <div class="chord-option" data-pitch="6">F&#9839;</div>
-        <div class="chord-option" data-pitch="7">G</div>
-        <div class="chord-option" data-pitch="8">G&#9839;</div>
-        <div class="chord-option" data-pitch="9">A</div>
-        <div class="chord-option" data-pitch="10">A&#9839;</div>
-        <div class="chord-option" data-pitch="11">B</div>
+      <div class="section-header">Base</div>
+      <div class="section">
+        <div class="option" data-pitch="0">C</div>
+        <div class="option" data-pitch="1">C&#9839;</div>
+        <div class="option" data-pitch="2">D</div>
+        <div class="option" data-pitch="3">D&#9839;</div>
+        <div class="option" data-pitch="4">E</div>
+        <div class="option" data-pitch="5">F</div>
+        <div class="option" data-pitch="6">F&#9839;</div>
+        <div class="option" data-pitch="7">G</div>
+        <div class="option" data-pitch="8">G&#9839;</div>
+        <div class="option" data-pitch="9">A</div>
+        <div class="option" data-pitch="10">A&#9839;</div>
+        <div class="option" data-pitch="11">B</div>
       </div>
 
-      <div class="chord-section-header">Quality</div>
-      <div class="chord-section">
-        <div class="chord-option" data-quality="0">maj</div>
-        <div class="chord-option" data-quality="-1">min</div>
-        <div class="chord-option" data-quality="-2">dim</div>
-        <div class="chord-option" data-quality="1">aug</div>
+      <div class="section-header">Quality</div>
+      <div class="section">
+        <div class="option" data-quality="0">maj</div>
+        <div class="option" data-quality="-1">min</div>
+        <div class="option" data-quality="-2">dim</div>
+        <div class="option" data-quality="1">aug</div>
       </div>
 
-      <div class="chord-section-header">Add</div>
-      <div class="chord-section">
-        <div class="chord-option" data-add="0">&times;</div>
-        <div class="chord-option" data-add="2">2</div>
-        <div class="chord-option" data-add="4">4</div>
-        <div class="chord-option" data-add="6">6</div>
-        <div class="chord-option" data-add="7">7</div>
-        <div class="chord-option" data-add="9">9</div>
+      <div class="section-header">Add</div>
+      <div class="section">
+        <div class="option" data-add="0">&times;</div>
+        <div class="option" data-add="2">2</div>
+        <div class="option" data-add="4">4</div>
+        <div class="option" data-add="6">6</div>
+        <div class="option" data-add="7">7</div>
+        <div class="option" data-add="9">9</div>
       </div>
 
     </div>

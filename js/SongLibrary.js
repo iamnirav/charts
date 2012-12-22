@@ -104,7 +104,7 @@ SongLibrary.$find('.modal-footer .btn-primary').on('click touchend', function(e)
   // Open song
   $song.renderInto('.chart-wrapper');
   $song.renderTitleInto('.song-title');
-  $song.renderKeyInto('.transpose-key-btn');
+  $song.renderFavKeysInto('.fav-keys-group');
   $song.save();
 
   SongLibrary.close();
