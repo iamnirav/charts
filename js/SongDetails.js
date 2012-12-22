@@ -15,7 +15,7 @@ SongDetails = {
     this.$find('h3').html($song.title);
 
     // Clear previously selected keys
-    this.$find('.option[data-key').removeClass('selected');
+    this.$find('.option[data-key]').removeClass('selected');
 
     // Select favorite keys
     var that = this;
