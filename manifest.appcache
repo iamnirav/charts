@@ -1,6 +1,29 @@
 CACHE MANIFEST
 
-# v0.1.0
+# v0.2.0
+
+CACHE:
+
+# css
+css/base.css
+css/bootstrap-responsive.min.css
+css/bootstrap.min.css
+
+# img
+img/glyphicons-halflings-white.png
+img/glyphicons-halflings.png
+
+# js
+js/jquery.js
+js/jquery.color.js
+js/bootstrap.min.js
+js/notes.js
+js/ChordEditor.js
+js/SongLibrary.js
+js/SongDetails.js
+js/models.js
+js/fixtures.js
+js/main.js
 
 NETWORK:
 *

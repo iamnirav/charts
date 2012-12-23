@@ -1,4 +1,3 @@
-charts
+Charts
 ==========
-
-Charts!
+v0.2.0
