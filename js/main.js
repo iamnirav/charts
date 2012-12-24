@@ -67,12 +67,14 @@ $(function() {
     $song.addRow();
     $song.save();
     $song.renderInto('.chart-wrapper');
+    return false;
   });
 
   $('.delete-last-row-btn').on('click touchend', function(e) {
     $song.deleteLastRow();
     $song.save();
     $song.renderInto('.chart-wrapper');
+    return false;
   });
 
   $('.chart-wrapper').on('mousedown touchstart', 'td', function(e) {
