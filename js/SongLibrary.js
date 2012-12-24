@@ -45,7 +45,7 @@ SongLibrary = {
         $('<tr>')
           .attr('data-id', value.id)
           .append('<td>' + value.title + '</td>')
-          .append('<td>' + value.letterKey() + '</td>')
+          .append('<td>' + value.letterKeys().join(', ') + '</td>')
           .appendTo(that.$find('.song-list tbody'));
       });
       this.isDirty = false;

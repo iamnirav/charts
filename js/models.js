@@ -135,6 +135,12 @@ Song.prototype.letterKey = function() {
   return intervalToPitch(this.key).toUpperCase();
 };
 
+Song.prototype.letterKeys = function() {
+  return $.map(this.favKeys, function(element) {
+    return intervalToPitch(element).toUpperCase();
+  });
+}
+
 Song.prototype.toJSON = function() {
   return {
     id      : this.id,
