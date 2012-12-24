@@ -30,7 +30,7 @@ SongLibrary = {
       }
     }
     this.songs.sort(function(song1, song2) {
-      return song1.title > song2.title;
+      return song1.title.toLowerCase() > song2.title.toLowerCase() ? 1 : -1;
     });
   },
 
@@ -45,7 +45,7 @@ SongLibrary = {
         $('<tr>')
           .attr('data-id', value.id)
           .append('<td>' + value.title + '</td>')
-          .append('<td>' + value.letterKey() + '</td>')
+          .append('<td>' + value.letterKeys().join(', ') + '</td>')
           .appendTo(that.$find('.song-list tbody'));
       });
       this.isDirty = false;

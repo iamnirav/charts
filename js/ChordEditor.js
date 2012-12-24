@@ -18,6 +18,11 @@ ChordEditor = {
     this.success = success;
     this.failure = failure;
 
+    // Show sharps or flats based on key
+    var showSharps = hasSharps(this.chord.song.key);
+    this.$find('.option[data-pitch] .sharp').toggle(showSharps);
+    this.$find('.option[data-pitch] .flat').toggle(!showSharps);
+
     // Set up options based on chord
     this.$find('.option').removeClass('selected');
     this.$find('.option[data-type="' + (chord.simile ? 0 : 1) + '"]').addClass('selected');
