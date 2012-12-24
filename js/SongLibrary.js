@@ -30,7 +30,7 @@ SongLibrary = {
       }
     }
     this.songs.sort(function(song1, song2) {
-      return song1.title > song2.title;
+      return song1.title.toLowerCase() > song2.title.toLowerCase() ? 1 : -1;
     });
   },
 
