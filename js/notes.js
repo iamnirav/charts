@@ -28,19 +28,22 @@ var _letterToNumeral = {
 }
 
 var _numeralToLetter = {
-  0 : ['c', 'b&#9839;'],
+  0 : ['c'],
   1 : ['d&#9837;', 'c&#9839;'],
   2 : ['d'],
   3 : ['e&#9837;', 'd&#9839;'],
-  4 : ['e', 'f&#9837;'],
-  5 : ['f', 'e'],
+  4 : ['e'],
+  5 : ['f'],
   6 : ['g&#9837;', 'f&#9839;'],
   7 : ['g'],
   8 : ['a&#9837;', 'g&#9839;'],
   9 : ['a'],
   10: ['b&#9837;', 'a&#9839;'],
-  11: ['b', 'c&#9837;']
+  11: ['b']
 }
+
+var _sharpKeys = [0, 2, 4, 7, 9, 11],
+     _flatKeys = [1, 3, 5, 6, 8, 10];
 
 // Translates a pitch into its numeral
 function pitchToNumeral(pitch) {
@@ -67,6 +70,12 @@ function intervalToPitch(key, interval) {
   var note = parseInt(key) + parseInt(interval);
 
   // Look up the actual pitch
-  // TODO: intelligently figure out which version of the pitch to use
-  return _numeralToLetter[note > 11 ? note - 12 : note][0];
+  var letterOpts = _numeralToLetter[note > 11 ? note - 12 : note];
+
+  // Return the correct version of the pitch based on the key
+  return letterOpts.length > 1 && hasSharps(key) ? letterOpts[1] : letterOpts[0];
+}
+
+function hasSharps(key) {
+  return _sharpKeys.indexOf(key) >= 0;
 }
