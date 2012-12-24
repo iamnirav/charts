@@ -87,6 +87,12 @@ h4 {
   background-image: url("../img/glyphicons-halflings-white.png");
 }
 
+.modal textarea {
+  width: 682px;
+  padding: 12px;
+  font: 18px "AmericanTypewriter", "Courier New", monospace;
+}
+
 /* Song Library */
 
 #song-library-modal .song-list tr.selected {

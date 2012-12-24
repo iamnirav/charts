@@ -9,7 +9,8 @@ function Song(options) {
   options      = options         || {};
   this.id      = options.id      || Song.generateId();
   this.key     = options.key     || 0; // C
-  this.title   = options.title   || "Enter a title...";
+  this.title   = options.title   || 'Enter a title...';
+  this.notes   = options.notes   || '';
   this.chart   = [];
   this.favKeys = options.favKeys || [this.key];
 
@@ -147,6 +148,7 @@ Song.prototype.toJSON = function() {
     key     : this.key,
     chart   : this.chart,
     title   : this.title,
+    notes   : this.notes,
     favKeys : this.favKeys
   };
 };
