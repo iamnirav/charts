@@ -11,7 +11,8 @@ SongDetails = {
 
   open: function() {
 
-    // TODO(nirav) maybe refactor into some other method?
+    // TODO(nirav) maybe refactor all of this into some other method?
+
     this.$find('h3').html($song.title);
 
     // Clear previously selected keys
@@ -22,6 +23,9 @@ SongDetails = {
     $.each($song.favKeys, function(index, value) {
       that.$find('.option[data-key="' + value + '"]').addClass('selected');
     });
+
+    // Populate notes
+    this.$find('textarea[data-notes]').val($song.notes);
 
     this.$node.modal('show');
   },
@@ -34,6 +38,8 @@ SongDetails = {
     $song.favKeys = this.$find('.option.selected[data-key]')
       .map(function() { return parseInt($(this).data('key')); })
       .get();
+
+    $song.notes = this.$find('textarea[data-notes]').val();
 
     $song.save();
   },

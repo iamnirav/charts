@@ -3,11 +3,15 @@
 <html manifest="manifest.appcache">
 <head>
 
-  <title></title>
+  <title>Charts</title>
 
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="Charts">
   <meta name="viewport" content="user-scalable=no, width=device-width" />
+
+  <link rel="apple-touch-icon-precomposed" href="img/icon.png" />
+  <link rel="apple-touch-startup-image" href="img/startup.png">
 
   <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet"  />
   <link type="text/css" href="css/bootstrap-responsive.min.css" rel="stylesheet"  />
@@ -17,7 +21,7 @@
 <body>
 
   <div class="container">
-    <div class="btn-toolbar">
+    <div class="btn-toolbar top-toolbar">
 
       <!-- Song selector -->
       <button class="btn btn-large song-library-btn"><i class="icon-th-list"></i></button>
@@ -34,7 +38,7 @@
     <div class="chart-wrapper">
     </div>
 
-    <div class="btn-toolbar pull-right">
+    <div class="btn-toolbar bottom-toolbar">
       <button class="btn btn-large add-row-btn">Add Row</button>
       <button class="btn btn-large delete-last-row-btn">Delete Last Row</button>
     </div>
@@ -43,25 +47,31 @@
   <!-- Song Details -->
   <div id="song-details-modal" class="modal hide" tabindex="-1" role="dialog">
     <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
       <h3>Song Details</h3>
     </div>
     <div class="modal-body">
+
       <div class="section-header">Favorite Keys</div>
       <div class="section">
         <div class="option" data-key="0">C</div>
-        <div class="option" data-key="1">C&#9839;</div>
+        <div class="option" data-key="1">D&#9837;</div>
         <div class="option" data-key="2">D</div>
-        <div class="option" data-key="3">D&#9839;</div>
+        <div class="option" data-key="3">E&#9837;</div>
         <div class="option" data-key="4">E</div>
         <div class="option" data-key="5">F</div>
-        <div class="option" data-key="6">F&#9839;</div>
+        <div class="option" data-key="6">G&#9837;</div>
         <div class="option" data-key="7">G</div>
-        <div class="option" data-key="8">G&#9839;</div>
+        <div class="option" data-key="8">A&#9837;</div>
         <div class="option" data-key="9">A</div>
-        <div class="option" data-key="10">A&#9839;</div>
+        <div class="option" data-key="10">B&#9837;</div>
         <div class="option" data-key="11">B</div>
       </div>
+
+      <div class="section-header">Notes</div>
+      <div class="section">
+        <textarea data-notes rows="10" placeholder="Write anything..."></textarea>
+      </div>
+
     </div>
     <div class="modal-footer">
 
@@ -80,7 +90,6 @@
   <!-- Song Library -->
   <div id="song-library-modal" class="modal hide" tabindex="-1" role="dialog">
     <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
       <h3>Song Library</h3>
     </div>
     <div class="modal-body">
@@ -108,7 +117,6 @@
   <!-- Chord Editor -->
   <div id="chord-editor-modal" class="modal hide" tabindex="-1" role="dialog">
     <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
       <h3>Edit Chord</h3>
     </div>
     <div class="modal-body">
@@ -122,16 +130,31 @@
       <div class="section-header">Base</div>
       <div class="section">
         <div class="option" data-pitch="0">C</div>
-        <div class="option" data-pitch="1">C&#9839;</div>
+        <div class="option" data-pitch="1">
+          <span class="sharp">C&#9839;</span>
+          <span class="flat">D&#9837;</span>
+        </div>
         <div class="option" data-pitch="2">D</div>
-        <div class="option" data-pitch="3">D&#9839;</div>
+        <div class="option" data-pitch="3">
+          <span class="sharp">D&#9839;</span>
+          <span class="flat">E&#9837;</span>
+        </div>
         <div class="option" data-pitch="4">E</div>
         <div class="option" data-pitch="5">F</div>
-        <div class="option" data-pitch="6">F&#9839;</div>
+        <div class="option" data-pitch="6">
+          <span class="sharp">F&#9839;</span>
+          <span class="flat">G&#9837;</span>
+        </div>
         <div class="option" data-pitch="7">G</div>
-        <div class="option" data-pitch="8">G&#9839;</div>
+        <div class="option" data-pitch="8">
+          <span class="sharp">G&#9839;</span>
+          <span class="flat">A&#9837;</span>
+        </div>
         <div class="option" data-pitch="9">A</div>
-        <div class="option" data-pitch="10">A&#9839;</div>
+        <div class="option" data-pitch="10">
+          <span class="sharp">A&#9839;</span>
+          <span class="flat">B&#9837;</span>
+        </div>
         <div class="option" data-pitch="11">B</div>
       </div>
 
