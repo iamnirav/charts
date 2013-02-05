@@ -12,10 +12,19 @@ function debug(arg) {
 $(function() {
 
   $song = false;
-  for (var key in localStorage) {
-    if (key.indexOf('Song') === 0) {
-      $song = Song.open(key);
-      break;
+
+  // Load from localStorage if possible
+  if (localStorage['currentSong']) {
+    $song = Song.open(localStorage['currentSong']);
+  }
+
+  // If we still haven't loaded a song, just pick one
+  if (!$song) {
+    for (var key in localStorage) {
+      if (key.indexOf('Song') === 0) {
+        $song = Song.open(key);
+        break;
+      }
     }
   }
 
