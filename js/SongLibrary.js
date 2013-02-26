@@ -109,6 +109,9 @@ SongLibrary.$find('.modal-footer .btn-primary').on('click touchend', function(e)
 
   SongLibrary.close();
 
+  // Save current song for later
+  localStorage['currentSong'] = $song.id
+
   // Clear the new song input fields
   $selected.find('.song-title, .song-key').val('');
 
